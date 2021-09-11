@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner inp= new Scanner(System.in);
+    int n= inp.nextInt();
+    int d=1;
+    while(d<=n)
+    {
+      int q=inp.nextInt();
+      String s="Test "+d+": ";
+        int i=2;
+        int tg=q;
+        while(i<=Math.sqrt(q))
+        {
+          int m=0;
+          while(tg%i==0)
+          {
+            m++;
+            tg/=i;
+          }
+          if (m!=0) s=s+ i+"("+m+") ";
+          i++;
+        }
+        if (tg!=1) s=s+ tg+"(1) ";
+        System.out.println(s);
+
+      d++;
+    }
+  }
+}
