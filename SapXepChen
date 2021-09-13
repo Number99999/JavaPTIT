@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class test{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n =sc.nextInt();
+        int a[]=new int[n];
+        for (int i=0; i<n; i++)
+        a[i]=sc.nextInt();
+        int b[]=new int[n];
+        for(int i=0; i<n; i++)
+        {
+            String out="Buoc "+(i)+":";
+            b[i]=a[i];
+            for (int j=0; j<i; j++)
+                for(int x=j+1; x<i+1; x++)
+                {
+                    if(b[j]>b[x])
+                    {
+                        int swap=b[x];
+                        b[x]=b[j];
+                        b[j]=swap;
+                    }
+                }
+            for(int j=0; j<=i; j++)
+                out+=" " +b[j];
+            System.out.println(out);
+        }
+    }
+}
