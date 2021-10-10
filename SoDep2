@@ -1,0 +1,27 @@
+import java.util.*;
+public class test{
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+        int t =sc.nextInt();
+        while (t>0)
+        {
+            t-=1;
+            String s=sc.next();
+            boolean check=true;
+            if (s.charAt(0)!='8') check=false;
+            int n=s.length();
+            int sum=0;
+            for(int i=0; i<n/2; i+=1)
+                if(s.charAt(i)!=s.charAt(n-i-1)) check=false;
+            for (int i=0; i<n; i++)
+            {
+                int x=s.charAt(i);
+                sum=sum+x-48;
+            }
+            if(sum%10!=0)  check=false;
+            if(check==true) System.out.println("YES");
+            else System.out.println("NO");
+        }
+        sc.close();
+    }
+}
