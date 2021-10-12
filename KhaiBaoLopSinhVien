@@ -1,0 +1,35 @@
+import java.util.*;
+public class test{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Student st=new Student(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextFloat());
+        System.out.println(st.toString());
+    }
+}
+class Student
+{
+  private String name;
+  private String cls;
+  private String date;
+  private Float point;
+
+
+  public Student(String name, String cls , String date, Float p)
+  {
+    this.name=name;
+    this.cls=cls;
+    this.date=date;
+    this.point=p;
+  }
+
+@Override
+  public String toString()
+  {
+    String []t=this.date.split("/");
+    if (t[0].length()==1) t[0]="0"+t[0];
+    if (t[1].length()==1) t[1]="0"+t[1];
+
+    String s="B20DCCN001 "+name +" "+cls+" "+ t[0]+"/"+t[1]+"/"+t[2] +" "+ String.format("%.2f", point);
+    return s;
+  }
+}
