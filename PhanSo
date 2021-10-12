@@ -1,0 +1,36 @@
+
+package code.ptit;
+import java.util.*;
+public class CodePtit {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        PhanSo ps=new PhanSo(sc.nextLong(), sc.nextLong());
+        ps.rutgon();
+        System.out.println(ps); 
+    }
+}
+class PhanSo {
+    private long t;
+    private long m;
+    public PhanSo(long t, long m)
+    {
+        this.t=t;
+        this.m=m;
+    }
+    private long gcd(long x, long y)
+    {
+        if(y==0) return x;
+        return gcd(y, x%y);
+    }
+    public void rutgon()
+    {
+        long a=gcd(t,m);
+        t=t/a;
+        m=m/a;
+    }
+    @Override
+    public String toString()
+    {
+        return t+"/"+m;
+    }
+}
