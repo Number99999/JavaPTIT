@@ -1,0 +1,26 @@
+import java.util.*;
+/**
+ * main
+ */
+public class main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0)
+        {
+            long n=sc.nextLong();
+            long o=1;
+            for(long i=2; i<=n; i++)
+            {
+                long x=gcd(o, i);
+                o=o*i/x;
+            }
+            System.out.println(o);
+        }
+    }
+    public static long gcd(long a, long b)
+    {
+        if(b==0) return a;
+        return gcd(b, a%b);
+    }
+}
