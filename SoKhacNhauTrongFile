@@ -1,0 +1,18 @@
+import java.util.*;
+import java.io.*;
+public class main {
+  public static void main(String[] args) throws FileNotFoundException {
+    File f=new File("DATA.in");
+    int[] mt=new int[100001];
+    Scanner sc=new Scanner(f);
+    while (sc.hasNextInt()) {
+      mt[sc.nextInt()]+=1;
+    }
+    for(int i=0; i<100001; i++)
+    {
+      if(mt[i]!=0)
+        System.out.println(i + " "+mt[i]);
+    }
+    sc.close();
+  }
+}
