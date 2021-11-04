@@ -1,0 +1,40 @@
+main.java
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        NhanVien nv=new NhanVien(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+        System.out.println(nv.toString());
+    }
+}
+NhanVien.java
+class NhanVien {
+    private String mnv="00001";
+    private String name;
+    private String sex;
+    private String date;
+    private String add;
+    private String number;
+    private String day;
+    public NhanVien(String name, String sex, String date, String add, String number, String day)
+    {
+        this.name=name;
+        this.sex=sex;
+        this.date=date;
+        this.add=add;
+        this.number=number;
+        this.day=day;
+    }
+    @Override
+    public String toString()
+    {
+        String t[]=day.split("/");
+        String t1[]=date.split("/");
+        if(t[0].length()==1) t[0]="0"+t[0];
+        if(t[1].length()==1) t[1]="0"+t[1];
+        if(t1[0].length()==1) t1[0]="0"+t1[0];
+        if(t1[1].length()==1) t1[1]="0"+t1[1];
+        String s=mnv+" " +name+" "+sex+" "+date+" "+ add+ " "+number+" "+day;
+        return s;
+    }
+}
