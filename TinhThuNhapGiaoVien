@@ -1,0 +1,50 @@
+Teacher.java
+public class Teacher{
+    private String name;
+    private String id;
+    private int hs;
+    private int trocap;
+    private int salary;
+    private int income;
+    public Teacher(String a, String name, int salary)
+    {
+        id=a;
+        this.hs=updatehs(a);
+        trocap=updatetc(a);
+        this.name=name;
+        this.salary=salary;
+        income=uincome();
+    }
+    private int updatehs(String s)
+    {
+        int x=(s.charAt(2)-48)*10+s.charAt(3)-48;
+        return x;
+    }
+    private int updatetc(String s)
+    {
+        String x=s.charAt(0)+""+s.charAt(1);
+        if(x.compareTo("HT")==0) 
+            return 2000000;
+        else  if(x.compareTo("HP")==0)
+            return 900000;
+        else return 500000;
+    }
+    public int uincome(){
+        return salary*hs+trocap;
+    }
+    @Override
+    public String toString(){
+        return id+" "+name + ' '+hs+" "+trocap+' '+income;
+    }
+}
+main.java
+import java.util.*;
+public class main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Teacher t=new Teacher(sc.nextLine(), sc.nextLine(), sc.nextInt());
+        System.out.println(t.toString());
+    }
+}
+
+  
