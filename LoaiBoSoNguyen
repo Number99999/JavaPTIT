@@ -1,0 +1,18 @@
+import java.util.*;
+import java.io.*;
+import java.lang.reflect.Array;
+public class main{
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc=new Scanner(new File("DATA.in"));
+        ArrayList<String> out=new ArrayList<>();
+        while(sc.hasNext()){
+            if(sc.hasNextInt()) sc.nextInt();
+            else out.add(sc.next());
+        }
+        Collections.sort(out, Comparator.naturalOrder());   // sắp xếp theo từ điển tăng dần, reservedOrder để giảm dần
+        String s="";
+        for(int i=0; i<out.size(); i++) s+=out.get(i)+" ";
+        System.out.println(s);
+        sc.close();
+    }
+}
