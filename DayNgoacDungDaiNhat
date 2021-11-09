@@ -1,0 +1,25 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0)
+        {
+            int max=0;
+            ArrayList<Integer> stk=new ArrayList<>();
+            stk.add(-1);
+            String s=sc.next();
+            for(int i=0; i<s.length(); i++)
+            {
+                if(s.charAt(i)=='(') stk.add(i);
+                else{
+                    stk.remove(stk.size()-1);
+                    if(stk.size()>0) 
+                        if(max<(i-stk.get(stk.size()-1))) max=i-stk.get(stk.size()-1);
+                    if(stk.size()==0) stk.add(i);
+                }
+            }
+            System.out.println(max);
+        }
+    }
+}
