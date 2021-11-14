@@ -1,0 +1,31 @@
+import java.security.Principal;
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        HashMap<String, Integer> map=new HashMap<>();
+        while(t-->0)
+        {
+            String s=sc.nextLine();
+            s=s.trim().toLowerCase();
+            s=s.replaceAll("\\s+", " ");
+            s=s.replaceAll("//s+", " ");
+            String[] arr=s.split(" ");
+            String out=arr[arr.length-1];
+            for(int i=0; i<arr.length-1; i++) out+=String.valueOf(arr[i].charAt(0));
+            if(map.containsKey(out)==true) 
+            {
+                map.put(out, map.get(out)+1);
+                out+=(map.get(out))+"@ptit.edu.vn";
+                System.out.println(out);
+            }
+            else{
+                map.put(out, 1);
+                System.out.println(out+"@ptit.edu.vn");
+            }
+        }
+        sc.close();
+    }
+}
