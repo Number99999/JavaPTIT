@@ -1,0 +1,21 @@
+import java.security.Principal;
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        while(t-->0)
+        {
+            String s=sc.nextLine();
+            s=s.trim().toLowerCase();
+            s=s.replaceAll("\\s+", " ");
+            String[] arr=s.split(" ");
+            String out="";
+            for(int i=1; i<arr.length-1; i++) out+=String.valueOf(arr[i].charAt(0)).toUpperCase()+arr[i].substring(1)+" ";
+            out+=String.valueOf(arr[arr.length-1].charAt(0)).toUpperCase()+arr[arr.length-1].substring(1)+", "+arr[0].toUpperCase();
+            System.out.println(out);
+        }
+        sc.close();
+    }
+}
