@@ -1,0 +1,47 @@
+SinhVien.java
+import java.text.*;
+public class SinhVien{
+    private String name="", msv="", date="";
+    private float score=0;
+    private String stt="";
+    public SinhVien(int stt ,String name, String msv, String adate, Float score)
+    {
+        this.stt=String.format("%03d", stt);
+        this.name=name;
+        this.msv=msv;
+        this.date=update(adate);
+        this.score=score;
+    }
+    private String update(String udate)
+    {
+        String[] a= udate.split("/");
+        if(a[0].length()<2) a[0]="0"+a[0];
+        if(a[1].length()<2) a[1]="0"+a[1];
+        return a[0]+"/"+a[1]+"/"+a[2];
+    }
+    @Override
+    public String toString()
+    {
+        String s= "B20DCCN"+stt+" "+name+" "+msv+" "+date+" "+String.format("%.2f", score);
+        return s;
+    }
+}
+
+main.java
+import java.util.*;
+public class main{
+  public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    int t=sc.nextInt();
+    sc.nextLine();
+    List<SinhVien> sv=new ArrayList<>();
+    for(int i=0; i<t; i++)
+    { 
+      SinhVien s=new SinhVien(i+1, sc.nextLine(), sc.next(), sc.next(), sc.nextFloat());
+      sc.nextLine();
+      sv.add(s);
+    }
+    for(int i=0; i<t; i++) System.out.println(sv.get(i).toString());
+    sc.close();
+  }
+}
