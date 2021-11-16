@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 1; t <= T; t++) {
+            int n = sc.nextInt(), m = sc.nextInt();
+            long[][] mt = new long[n][m];
+            long[][] hv = new long[m][n];
+            long[][] out = new long[n][n];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++) {
+                    mt[i][j] = sc.nextInt();
+                    hv[j][i] = mt[i][j];
+                }
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++) {
+                    out[i][j] = 0;
+                    for (int x = 0; x < m; x++)
+                        out[i][j] += mt[i][x] * hv[x][j];
+                }
+            System.out.println("Test "+t+":");
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++)
+                    System.out.print(out[i][j] + " ");
+                System.out.println("");
+            }
+        }
+        sc.close();
+    }
+}
