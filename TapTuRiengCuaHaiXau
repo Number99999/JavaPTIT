@@ -1,0 +1,31 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        while(t-->0){
+            String[] s1=sc.nextLine().split(" ");
+            String[] s2=sc.nextLine().split(" ");
+            List<String> l1=new ArrayList<>();
+            List<String> l2=new ArrayList<>();
+            for(int i=0; i<s1.length; i++)
+            {
+                if(l1.contains(s1[i])==false) l1.add(s1[i]);
+            }
+            for(int i=0; i<s2.length; i++)
+            {
+                if(l2.contains(s2[i])==false) l2.add(s2[i]);
+            }
+            List<String> list=new ArrayList<>();
+            for(int i=0; i<l1.size(); i++)
+            {
+                if(l2.contains(l1.get(i))==false) list.add(l1.get(i));
+            }
+            Collections.sort(list);
+            for(int i=0; i<list.size(); i++) System.out.print(list.get(i)+" ");
+            System.out.println("");
+        }
+        sc.close();
+    }
+}
