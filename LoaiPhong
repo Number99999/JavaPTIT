@@ -1,0 +1,40 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    public static void main(String[] args) throws IOException {
+        ArrayList<LoaiPhong> ds = new ArrayList<>();
+        Scanner in = new Scanner(new File("PHONG.in"));
+        int n = Integer.parseInt(in.nextLine());
+        while(n-->0){
+            ds.add(new LoaiPhong(in.nextLine()));
+        }
+        Collections.sort(ds);
+        for(LoaiPhong tmp : ds){
+            System.out.println(tmp);
+        }
+    }
+}
+
+public class LoaiPhong implements Comparable<LoaiPhong>{
+    private String kihieu, name;
+    private int price;
+    private float fee;
+    public LoaiPhong(String s){
+        String[] list=s.split(" ");
+        kihieu=list[0];
+        name=list[1];
+        price=Integer.parseInt(list[2]);
+        fee=Float.parseFloat(list[3]);
+    }
+    public String getname(){
+        return name;
+    }
+    @Override
+    public String toString(){
+        return kihieu+" "+name+" "+price+" "+fee;
+    }
+    @Override
+    public int compareTo(LoaiPhong p){
+        return this.name.compareToIgnoreCase(p.getname());
+    }
+}
