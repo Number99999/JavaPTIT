@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            String s = sc.next();
+            Boolean check = true;
+            int x = s.charAt(0) - 48, sum = x;
+            for (int i = 1; i < s.length(); i++) {
+                int y = s.charAt(i) - 48;
+                sum += y;
+                if (x-y!=2 && x-y!=-2) {
+                    check = false;
+                    break;
+                }
+                else x=y;
+            }
+            if (check == true && sum % 10 == 0)
+                System.out.println("YES");
+            else
+                System.out.println("NO");
+        }
+        sc.close();
+    }
+}
