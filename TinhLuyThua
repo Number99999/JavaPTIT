@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner inp= new Scanner(System.in);
+    long n,m;
+    do
+    {
+      n= inp.nextLong();
+      m= inp.nextLong();
+      if (n!=0 || m!=0)
+        System.out.println(mu(n,m));
+    }while(n!=0 || m!=0);
+    inp.close();
+  }
+
+  public static long  mu(long n, long m)
+  {
+    long x= (long)(1000000007);
+    if (m==0) return (long)1;
+    if (m%2==0)
+    {
+      long t= mu(n,m/2)%x;
+      return (t*t)%x;
+    }
+    else 
+    {
+      long t= mu(n,m/2)%x;
+      return ((t*t)%x*n)%x;
+    }
+  }
+}
