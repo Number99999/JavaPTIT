@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner inp = new Scanner(System.in);
+    int t = inp.nextInt();
+
+    long[] a = new long[94];
+    a[0] = 1;
+    a[1] = 1;
+    for (int i = 2; i < 93; i++)
+      a[i] = a[i - 1] + a[i - 2];
+    while (t-- != 0) {
+      int n = inp.nextInt();
+      long m = inp.nextLong();
+      while (n != 0 && n != 1) {
+        if (m > a[n - 2]) {
+          m = m - a[n - 2];
+          n = n - 1;
+        } else
+          n -= 2;
+      }
+      if (n == 1)
+        System.out.println(1);
+      else
+        System.out.println(0);
+    }
+
+    inp.close();
+  }
+}
