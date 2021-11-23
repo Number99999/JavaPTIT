@@ -1,0 +1,44 @@
+ Main.java
+import java.util.*;
+import java.io.*;
+public class Main{
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc=new Scanner(new File("MONHOC.in"));
+        int n=Integer.parseInt(sc.nextLine());
+        ArrayList<MonHoc> ds=new ArrayList<>();
+        for(int i=0; i<n; i++){
+            MonHoc m=new MonHoc(sc.nextLine(), sc.nextLine(), sc.nextLine());
+            ds.add(m);
+        }
+        Collections.sort(ds);
+        for(MonHoc a: ds){
+            System.out.println(a.toString());
+        }
+    }
+}
+MonHoc.java
+public class MonHoc implements Comparable<MonHoc> {
+    private String id, name;
+    private int soTin;
+
+    public MonHoc(String id, String name, String soTin) {
+        this.id = id;
+        this.name = name;
+        this.soTin = Integer.parseInt(soTin);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + name + " " + soTin;
+    }
+
+    @Override
+    public int compareTo(MonHoc mh) {
+        return name.compareTo(mh.getName());
+    }
+}
+
