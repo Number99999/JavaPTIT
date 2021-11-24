@@ -1,0 +1,83 @@
+Diem.java
+import java.text.DecimalFormat;
+
+public class Diem {
+    private String name, id;
+    private float p1, p2;
+    private int age;
+    public Diem(int stt, String name, int age, float p1, float p2){
+        if(stt<10) id="PH"+String.format("%02d", stt);
+        else id="PH"+stt;
+        this.name=name;
+        this.age=age;
+        this.p1=p1;
+        this.p2=p2;
+    }
+    // public String fixName(String s) {
+    //     s = s.trim().toLowerCase();
+    //     s = s.replaceAll("\\s+", " ");
+    //     String[] a = s.split(" ");
+    //     String out = String.valueOf(a[0].charAt(0)).toUpperCase() + a[0].substring(1);
+    //     for (int i = 1; i < a.length; i++)
+    //         out += " " + String.valueOf(a[i].charAt(0)).toUpperCase() + a[i].substring(1);
+    //     return out;
+    // }
+    // public int getAge(String s){
+    //     String[] tmp=s.split(" ");
+    //     return Integer.parseInt(tmp[2]);
+    // }
+
+    public float diemthuong(){
+        if(p1<7.5 || p2<7.5) return 0;
+        if(p1<8 || p2<8) return (float) 0.5;
+        return 1;
+    }
+    @Override
+    public String toString(){
+        int a=Math.round((p1+p2)/2+diemthuong());
+        String s=id+" "+name+" "+ age+" ";
+        if(a<=10) s+=a+" ";
+        else s+=10+" ";
+        if(a<5) s+="Truot";
+        else if(a==6 || a==5) s+="Trung binh";
+        else if(a==7) s+="Kha";
+        else if(a==8) s+="Gioi";
+        else s+="Xuat sac";
+        return s;
+    }
+}
+
+Main.java
+import java.util.*;
+import java.io.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        ArrayList<Diem> ds=new ArrayList<>();
+        for(int i=1; i<=t; i++){
+            String name=fixName(sc.nextLine());
+            int age=fixAge(sc.nextLine());
+            float p1=sc.nextFloat(), p2=sc.nextFloat();
+            Diem d=new Diem(i,name, age, p1, p2);
+            sc.nextLine();
+            ds.add(d);
+        }
+        for(Diem d: ds) System.out.println(d.toString());
+        sc.close();
+    }
+    public static String fixName(String s) {
+        s = s.trim().toLowerCase();
+        s = s.replaceAll("\\s+", " ");
+        String[] a = s.split(" ");
+        String out = String.valueOf(a[0].charAt(0)).toUpperCase() + a[0].substring(1);
+        for (int i = 1; i < a.length; i++)
+            out += " " + String.valueOf(a[i].charAt(0)).toUpperCase() + a[i].substring(1);
+        return out;
+    }
+    public static int fixAge(String s){
+        String[] tmp=s.split("/");
+        return 2021-Integer.parseInt(tmp[tmp.length-1]);
+    }
+}
