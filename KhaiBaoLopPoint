@@ -1,0 +1,53 @@
+Main.java
+import java.util.*;
+import java.io.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            Point p1=new Point(sc.nextDouble(), sc.nextDouble());
+            Point p2=new Point(sc.nextDouble(), sc.nextDouble());
+            System.out.println(p1.distance(p2));
+        }
+        sc.close();
+    }   
+}
+Point.java
+public class Point {
+    private double x, y;
+
+    public Point() {
+        x = 1;
+        y = 1;
+    }
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public String distance(Point p2) {
+        double a= Math.sqrt((x - p2.getX()) * (x - p2.getX()) + (y - p2.getY()) * (y - p2.getY()));
+        return String.format("%.4f", a);
+    }
+
+    public static String distence(Point p1, Point p2){
+        double a= Math.sqrt((p1.getX()-p2.getX())*p1.getX()-p2.getX() + (p2.getY()-p1.getY())*(p2.getY()-p1.getY()) );
+        return String.format("%.4f", a);
+    }
+
+    @Override
+    public String toString(){
+        return x+" "+y;
+    }
+}
+
