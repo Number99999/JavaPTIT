@@ -1,0 +1,41 @@
+DoanNghiep.java
+public class DoanNghiep implements Comparable<DoanNghiep> {
+    private String id, name;
+    private int stu;
+    public DoanNghiep(String id, String name, int stu){
+        this.id=id;
+        this.name=name;
+        this.stu=stu;
+    }
+    @Override
+    public String toString(){
+        return id+" "+name+" "+stu;
+    }
+    public String getId(){
+        return id;
+    }
+    @Override
+    public int compareTo(DoanNghiep dn) {
+        
+        return id.compareTo(dn.getId());
+    }
+}
+
+Main.java
+import java.util.*;
+import java.io.*;
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc=new Scanner(new File("DN.in"));
+        int t=Integer.parseInt(sc.nextLine());
+        List<DoanNghiep> ds=new ArrayList<>();
+        while(t-->0){
+            DoanNghiep d=new DoanNghiep(sc.nextLine(), sc.nextLine(), Integer.parseInt(sc.nextLine()));
+            ds.add(d); 
+        }
+        Collections.sort(ds);
+        for(DoanNghiep dn: ds) System.out.println(dn.toString());
+        sc.close();
+    }
+}
+
