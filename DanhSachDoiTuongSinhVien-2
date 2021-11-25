@@ -1,0 +1,52 @@
+Student.java
+public class Student implements Comparable<Student> {
+    private String id, name, cls, date;
+    private float point;
+    public Student(int stt, String name, String cls, String date, float point){
+        this.id="B20DCCN"+String.format("%03d", stt);
+        this.name=fixName(name);
+        this.date=date;
+        this.point=point;
+        this.cls=cls;
+    }
+    public String fixName(String s){
+        s=s.trim().toLowerCase();
+        s=s.replaceAll("\\s+"," ");
+        String[] tmp=s.split(" ");
+        String out=String.valueOf(tmp[0].charAt(0)).toUpperCase()+ tmp[0].substring(1);
+        for(int i=1; i<tmp.length; i++) out+=" "+String.valueOf(tmp[i].charAt(0)).toUpperCase()+tmp[i].substring(1);
+        return out;
+    }
+    @Override
+    public String toString(){
+        String[] tmp=date.split("/");
+        if(tmp[0].length()==1) tmp[0]="0"+tmp[0];
+        if(tmp[1].length()==1) tmp[1]="0"+tmp[1];
+        return id+" "+name+" "+cls+' '+tmp[0]+'/'+tmp[1]+"/"+tmp[2]+" "+String.format("%.2f", point);
+    }
+    public float getPoint() {
+        return point;
+    }
+    @Override
+    public int compareTo(Student st){
+        if(point>st.getPoint()) return -1;
+        else return 1;
+    }
+}
+
+Main.java
+import java.lang.reflect.Array;
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Student> ds=new ArrayList<>();
+        int t=Integer.parseInt(sc.nextLine());
+        for(int i=0; i<t; i++){
+            Student s=new Student(i+1, sc.nextLine(), sc.nextLine(), sc.nextLine(), Float.parseFloat(sc.nextLine()));
+            ds.add(s);
+        }
+        Collections.sort(ds);
+        for(Student time: ds) System.out.println(time.toString());
+    }
+}
