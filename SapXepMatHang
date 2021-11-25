@@ -1,0 +1,50 @@
+Main.java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File("MATHANG.in"));
+        ArrayList ds = new ArrayList<MatHang>();
+        int t = Integer.parseInt(sc.nextLine());
+        for (int i = 0; i < t; i++) {
+            MatHang m = new MatHang(i + 1, sc.nextLine(), sc.nextLine(), sc.nextDouble(), sc.nextDouble());
+            if(sc.hasNextLine()) sc.nextLine();
+            ds.add(m);
+        }
+        Collections.sort(ds);
+        for (int i = 0; i < ds.size(); i++) {
+            System.out.println(ds.get(i).toString());
+        }
+        sc.close();
+    }
+}
+MatHang.java
+public class MatHang implements Comparable<MatHang> {
+    private String maHang, ten, nhom;
+    private double giaMua, giaBan, loi;
+    public MatHang(int stt, String ten, String nhom, double vao, double ra){
+        if(stt<10) maHang="MH0"+stt;
+        else maHang="MH"+stt;
+        this.ten=ten;
+        this.nhom=nhom;
+        this.giaMua=vao;
+        this.giaBan=ra;
+        this.loi=giaBan-giaMua;
+    }
+
+    public double getLoi(){
+        return loi;
+    }
+    @Override
+    public String toString(){
+        return maHang+" "+ten+" "+nhom+" "+String.format("%.02f", loi);
+    }
+    @Override
+    public int compareTo(MatHang mh){
+        if(loi>mh.getLoi()) return -1;
+        if(loi==mh.getLoi()) return 0;
+        return 1;
+    }
+}
+
