@@ -1,0 +1,46 @@
+main.java
+import java.util.*;
+import java.io.*;
+
+public class main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc=new Scanner(new File("SANPHAM.in"));
+        int t=Integer.parseInt(sc.nextLine());
+        List<SP> list=new ArrayList<>();
+        while(t-->0){
+            SP s=new SP(sc.nextLine(), sc.nextLine(), Integer.parseInt(sc.nextLine()), Integer.parseInt(sc.nextLine()));
+            list.add(s);
+        }
+        Collections.sort(list);
+        for(SP sp: list) System.out.println(sp.toString());
+    }
+}
+SP.java
+public class SP implements Comparable<SP> {
+    private String id, name;
+    private int price, bh;
+    public SP(String id, String name, Integer price, Integer bh){
+        this.id=id;
+        this.name=name;
+        this.price=price;
+        this.bh=bh;
+    }
+    public float getprice(){
+        return price;
+    }
+    public String getid(){
+        return id;
+    }
+    @Override
+    public String toString(){
+        return id+" "+name+" "+price+" "+bh;
+    }
+    @Override
+    public int compareTo(SP sp){
+        if(this.price>sp.getprice()) return -1;
+        if(this.price==sp.getprice()){
+            return this.id.compareTo(sp.getid());
+        }
+        return 1;
+    }
+}
