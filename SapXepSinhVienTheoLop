@@ -1,0 +1,47 @@
+Main.java
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=Integer.parseInt(sc.nextLine());
+        ArrayList<Student> ds=new ArrayList<>();
+        while(t-->0){
+            Student s=new Student(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            ds.add(s);
+        }
+        Collections.sort(ds);
+        for(Student s: ds) System.out.println(s.toString());
+        sc.close();
+    }
+}
+Student.java
+public class Student implements Comparable<Student> {
+    private String id, name, cls, email;
+
+    public Student(String id, String name, String cls, String email) {
+        this.id = id;
+        this.name = name;
+        this.cls = cls;
+        this.email = email;
+    }
+
+    public String getCls() {
+        return cls;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public int compareTo(Student s) {
+        if (this.cls.compareTo(s.getCls()) == 0)
+            return this.id.compareTo(s.getId());
+        return this.cls.compareTo(s.getCls());
+    }
+    @Override
+    public String toString(){
+        return id+' '+name+" "+ cls+" "+email;
+    }
+}
+
