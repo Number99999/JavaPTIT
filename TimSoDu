@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scan= new Scanner(System.in);
+    int t= scan.nextInt();
+    while (t--!=0)
+    {
+      String s= scan.next();
+      s="0"+s;
+      int d= ((int)(s.charAt(s.length()-2))-48)*10+(int)(s.charAt(s.length()-1))-48;
+      if (d%4==0) System.out.println(4);
+      else System.out.println(0);
+    }
+    scan.close();
+  } 
+}
