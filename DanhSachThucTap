@@ -1,0 +1,55 @@
+Main.java
+import java.io.*;
+import java.util.*;
+public class Main{
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Student> listS=new ArrayList<>();
+        int t=Integer.parseInt(sc.nextLine());
+        for(int i=0; i<t; i++){
+            listS.add(new Student(i+1, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine()));
+        }
+        int m=Integer.parseInt(sc.nextLine());
+        for(int i=0; i<m; i++){
+            String dn=sc.nextLine();
+            ArrayList<Student> s=new ArrayList<>();
+            for(Student stu: listS){
+                if(dn.compareTo(stu.getdN())==0) s.add(stu);
+            }
+            Collections.sort(s);
+            for(Student stu: s) System.out.println(stu.toString());
+        }
+    }
+}
+Student.java
+public class Student implements Comparable<Student> {
+    private String msv, name, cls, email, dN;
+    private int stt;
+
+    public Student(int stt, String msv, String name, String cls, String email, String dN) {
+        this.stt = stt;
+        this.msv = msv.trim();
+        this.name = name.trim();
+        this.cls = cls.trim();
+        this.email = email.trim();
+        this.dN = dN.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getdN() {
+        return dN;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return name.compareTo(o.getName());
+    }
+    @Override
+    public String toString(){
+        return stt+" "+msv+" "+name+" "+cls+" "+email+" "+dN;
+    }
+}
+
